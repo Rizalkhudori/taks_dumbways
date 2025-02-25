@@ -1,0 +1,40 @@
+{{#> layout currentPage="Edit Project"}}
+<div class="container my-5">
+  <div>
+  <h1 class="text-center mb-4">Edit Project</h1>
+  <form id="edit-project" action="/project-update/{{project.id}}?_method=PATCH" method="post" enctype="multipart/form-data">
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Project Name:</label>
+      <input type="text" id="name" name="project-name" value="{{project.projectName}}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="start_date" class="form-label">Start Date:</label>
+      <input type="date" id="start_date" name="start-date" value="{{project.startDate}}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="end_date" class="form-label">End Date:</label>
+      <input type="date" id="end_date" name="end-date" value="{{project.endDate}}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea id="description" name="description" class="form-control" required>{{project.description}}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="technologies" class="form-label">Technologies (pisahkan dengan koma):</label>
+      <input type="text" id="technologies" name="technologies" value="{{project.technologys}}" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Current Image:</label>
+      {{#if project.image}}
+        <img src="/{{project.image}}" alt="Project Image" class="img-fluid mb-3" style="max-width:200px;">
+      {{/if}}
+    </div>
+    <div class="mb-3">
+      <label for="upload-image" class="form-label">Change Image:</label>
+      <input type="file" id="upload-image" name="upload-image" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+{{/layout}}

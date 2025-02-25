@@ -1,0 +1,41 @@
+.testimonial-star-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.testimonial-star-buttons button {
+  font-size: 16px;
+  font-family: "Poppins", serif;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.testimonial-list {
+  width: 90%;
+   /* background-color: aquamarine;  */
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.testimonial-list article {
+  border: 1px solid #aaa;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.testimonial-list article img {
+  width: 50vh;
+}
+
+.testimonial-item-caption {
+  font-style: italic;
+  color: #777;
+}

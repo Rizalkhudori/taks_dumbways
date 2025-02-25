@@ -1,0 +1,30 @@
+{{#> layout currentPage="Testimonials"}}
+<!-- MAIN CONTENT TESTIMONIALS -->
+<main>
+  <h1 style="text-align: center">My Testimonials</h1>
+  <h3 style="text-align: center">Rating By Star</h3>
+
+  <!-- STAR BUTTONS -->
+  <div class="testimonial-star-buttons">
+    <button onclick="showAllTestimonials()">All</button>
+    <button onclick="filterTestimonialsByStar(1)">1★</button>
+    <button onclick="filterTestimonialsByStar(2)">2★</button>
+    <button onclick="filterTestimonialsByStar(3)">3★</button>
+    <button onclick="filterTestimonialsByStar(4)">4★</button>
+    <button onclick="filterTestimonialsByStar(5)">5★</button>
+  </div>
+
+  <!-- TESTIMONIAL LIST -->
+  <div id="testimonialsContainer" class="testimonial-list">
+    <!-- <article>
+          <img src="/img/coding.jpg" alt="testimonial-image" />
+          <p class="testimonial-item-caption">"Keren banget websitenya!"</p>
+          <p style="text-align: right">- Karunia Leo</p>
+          <p style="text-align: right; font-weight: bold">5★</p>
+        </article> -->
+    <p>Loading...</p>
+  </div>
+</main>
+
+<script src="/js/testimonials.js"></script>
+{{/layout}}

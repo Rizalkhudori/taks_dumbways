@@ -1,0 +1,36 @@
+{{#> layout currentPage="Login"}}
+<!-- Login -->
+<form id="login-form" action="/login" method="post" class="auth-form">
+    <h4 class="mb-4" "d-flex justify-content-center">LOG IN</h4>
+    <div class="input-group mb-3">
+        <input name="email" id="email" type="email" class="form-control" aria-label="Sizing example input"
+            aria-describedby="email" placeholder="email" required />
+    </div>
+
+    <div class="input-group mb-5  background-color: ;">
+        <input name="password" id="password" type="password" class="form-control" aria-label="Sizing example input"
+            aria-describedby="password" placeholder="password" required />
+    </div>
+</div> 
+<div>
+    {{!-- pesan error --}}
+    {{#if messages.error}}
+    <div class="alert alert-danger" role="alert">
+        {{messages.error}}
+    </div>
+    {{/if}}
+
+    {{!-- pesan sukses --}}
+    {{#if messages.success}}
+    <div class="alert alert-success" role="alert">
+        {{messages.success}}
+    </div>
+    {{/if}}
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" style="width: 100px;">Login</button>
+    </div>
+    <div class="text-center">
+        don't have an account? <a href="/register" class="text-decoration-none" "text-dark">Register</a><br>
+    </div>
+</form>
+{{/layout}}

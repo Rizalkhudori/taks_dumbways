@@ -1,0 +1,48 @@
+{{#> layout currentPage="Projects"}}
+<main>
+  <h1 style="text-align: center; margin-top: 30px;">My Projects</h1>
+  {{#if user}}
+  <div style="width: 90%; margin: 10px auto; text-align: center;">
+    <a href="/project-create" class="btn btn-orangered mb-4">Create Project</a>
+  </div>
+  {{/if}}
+  <div class="container">
+    <div class="row">
+      {{#each projects}}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="/{{this.image}}" class="card-img-top" alt="{{this.projectName}}">
+          <div class="card-body">
+            <h5 class="card-title">{{this.projectName}}</h5>
+            <p class="card-text">Duration: {{projectDuration this.startDate this.endDate}} days</p>
+            <p class="card-text">{{this.description}}</p>
+            <div class="d-flex flex-wrap mb-3">
+              {{!-- Tampilkan icon berdasarkan teknologi yang digunakan --}}
+              {{#if (includes this.technologys "Node Js")}}
+                <img src="/img/nodejs.png" alt="Node Js" width="32" height="32" class="me-2 mb-2">
+              {{/if}}
+              {{#if (includes this.technologys "Next Js")}}
+                <img src="/img/nextjs.png" alt="Next Js" width="32" height="32" class="me-2 mb-2">
+              {{/if}}
+              {{#if (includes this.technologys "React Js")}}
+                <img src="/img/react.png" alt="React Js" width="32" height="32" class="me-2 mb-2">
+              {{/if}}
+              {{#if (includes this.technologys "TypeScript")}}
+                <img src="/img/typescript.png" alt="TypeScript" width="32" height="32" class="me-2 mb-2">
+              {{/if}}
+            </div>
+            <div class="d-flex justify-content-between">
+              <a href="/project-edit/{{this.id}}" class="btn btn-warning">Edit</a>
+              <form id="deleteproject" style="display: inline;" action="/projects/{{this.id}}?_method=DELETE" method="post" onsubmit="deleteConfirm(event)">
+                <button class="btn btn-danger" type="submit">Delete Project</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</main>
+<script src="/js/deleteproject.js"></script>
+{{/layout}}

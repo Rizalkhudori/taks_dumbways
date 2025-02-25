@@ -1,0 +1,36 @@
+{{#> layout currentPage="Create Project"}}
+<form id="create-project-form" action="/project-create" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="project-name">Project Name</label>
+    <input id="project-name" name="projectName" type="text" required/>
+  </div>
+  <div class="form-group">
+    <label for="start-date">Start Date</label>
+    <input id="start-date" name="startDate" type="date" required/>
+  </div>
+  <div class="form-group">
+    <label for="end-date">End Date</label>
+    <input id="end-date" name="endDate" type="date" required/>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+  </div>
+  <div class="form-group">
+    <label>Technologies</label>
+    <div class="checkbox-group">
+      <label><input name="technologies" type="checkbox" value="Node Js" /> Node Js</label>
+      <label><input name="technologies" type="checkbox" value="Next Js" /> Next Js</label>
+      <label><input name="technologies" type="checkbox" value="React Js" /> React Js</label>
+      <label><input name="technologies" type="checkbox" value="TypeScript"/> TypeScript</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="upload-image">Upload Image</label>
+    <input id="upload-image" name="upload-image" type="file" required/>
+  </div>
+  <div class="form-group">
+    <button type="submit">Create Project</button>
+  </div>
+</form>
+{{/layout}}

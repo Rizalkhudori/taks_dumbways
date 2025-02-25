@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg ">
+    <div class="container" >
+         {{!-- class="navbar-brand" href="#"> --}}
+            <nav class="navbar padding y: 0rem"> 
+    <a class="navbar-brand" href="#">
+      <img src="/img/logo.png" alt="Bootstrap" width="50">
+    </a>
+</nav>
+        <button class=" navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {{#if (equal currentPage 'Home')}}
+                    active fw-bold
+                    {{/if}}
+                    " aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {{#if (equal currentPage 'Projects')}}
+                    active fw-bold
+                    {{/if}}
+                    " href="/projects">MY PROJECT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {{#if (equal currentPage 'Testimonials')}}
+                    active fw-bold
+                    {{/if}}
+                    " href="/testimonials">Testimonials</a>
+                </li>
+            </ul>
+            <div>
+                
+            {{#if user}}
+                <span class="me-3">Selamat datang, {{user.name}}</span>
+                <a class="btn btn-orangered" href="/logout">Logout</a>
+                 {{else}}
+                    <a class="btn btn-orangered" href="/login">login</a>
+                {{/if}}
+                <a class="btn btn-orangered" href="/contact">Contact me</a>
+          </div>
+        </div> 
+    </div>
+</nav>

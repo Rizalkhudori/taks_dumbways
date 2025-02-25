@@ -1,0 +1,21 @@
+{{#> layout currentPage="Project Detail"}}
+<div class="container">
+  <h2>{{project.projectName}}</h2>
+  <p>Description: {{project.description}}</p>
+  <p>Duration: <span id="duration"></span> days</p>
+  <p>Technologies:</p>
+  <ul>
+    {{#each project.technologys}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <img src="/{{project.image}}" alt="Project Image">
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const startDate = new Date("{{project.startDate}}");
+  const endDate = new Date("{{project.endDate}}");
+  document.getElementById("duration").innerText = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+});
+</script>
+{{/layout}}
