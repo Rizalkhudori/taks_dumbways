@@ -10,13 +10,13 @@
     <div class="row">
       {{#each projects}}
       <div class="col-md-4 mb-4">
-        <div class="card h-100">
+        <div class="card h-100 project-card">
           <img src="/{{this.image}}" class="card-img-top" alt="{{this.projectName}}">
           <div class="card-body">
             <h5 class="card-title">{{this.projectName}}</h5>
-            <p class="card-text">Duration: {{projectDuration this.startDate this.endDate}} days</p>
-            <p class="card-text">{{this.description}}</p>
-            <div class="d-flex flex-wrap mb-3">
+            <p class="card-text"> <h6>Duration: {{projectDuration this.startDate this.endDate}}days</h6></p>
+            <p class="card-text"> <h6>{{this.description}}</h6></p>
+            <div class="d-flex text-align: center; mb-3 icons">
               {{!-- Tampilkan icon berdasarkan teknologi yang digunakan --}}
               {{#if (includes this.technologys "Node Js")}}
                 <img src="/img/nodejs.png" alt="Node Js" width="32" height="32" class="me-2 mb-2">
@@ -31,9 +31,9 @@
                 <img src="/img/typescript.png" alt="TypeScript" width="32" height="32" class="me-2 mb-2">
               {{/if}}
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between buttons">
               <a href="/project-edit/{{this.id}}" class="btn btn-warning">Edit</a>
-              <form id="deleteproject" style="display: inline;" action="/projects/{{this.id}}?_method=DELETE" method="post" onsubmit="deleteConfirm(event)">
+              <form style="display: inline;" action="/projects/{{this.id}}?_method=DELETE" method="post" onsubmit="deleteConfirm(event, this)">
                 <button class="btn btn-danger" type="submit">Delete Project</button>
               </form>
             </div>

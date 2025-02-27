@@ -17,25 +17,56 @@
 
 .testimonial-list {
   width: 90%;
-   /* background-color: aquamarine;  */
   margin: 10px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
+.testimonial-list :hover{
+  transform: scale(1.05);
+}
+
 .testimonial-list article {
-  border: 1px solid #aaa;
+  border: 1px solid #a1a1a1;
+  background-color: rgb(222, 228, 227);
   padding: 10px;
   box-sizing: border-box;
   border-radius: 5px;
 }
 
 .testimonial-list article img {
-  width: 50vh;
+  width: 100%;
+  height: auto;
 }
 
 .testimonial-item-caption {
   font-style: italic;
   color: #777;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+  .testimonial-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .testimonial-list {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .testimonial-star-buttons button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .testimonial-list article {
+    padding: 8px;
+  }
 }

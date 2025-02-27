@@ -132,12 +132,37 @@ async function renderEditProject(req, res) {
   try {
     const project = await Project.findOne({ where: { id } });
     if (!project) return res.render("page-404");
-    res.render("project-edit", { project, user });
+
+    // Tangani field 'technologys'
+    let techData = project.technologys || "[]";
+    if (typeof techData === "string") {
+      // Jika string tidak diawali dengan "[" anggap sebagai comma separated string
+      if (techData.trim().charAt(0) !== "[") {
+        techData = techData.split(",").map(item => item.trim());
+      } else {
+        techData = JSON.parse(techData);
+      }
+    }
+    project.technologys = techData;
+
+    // Konversi project ke objek plain
+    const formattedProject = project.toJSON();
+
+    // Format tanggal agar sesuai dengan input type="date" (YYYY-MM-DD)
+    formattedProject.startDate = new Date(formattedProject.startDate)
+      .toISOString()
+      .split("T")[0];
+    formattedProject.endDate = new Date(formattedProject.endDate)
+      .toISOString()
+      .split("T")[0];
+
+    res.render("project-edit", { project: formattedProject, user });
   } catch (err) {
     console.error("Error fetching project for edit:", err);
     res.render("page-404");
   }
 }
+
 
 async function createProject(req, res) {
   const { projectName, startDate, endDate, description } = req.body;
@@ -186,6 +211,7 @@ async function updateProject(req, res) {
   // Untuk update, Anda dapat mengubah field sesuai form edit yang dikirimkan
   const { "project-name": projectName, "start-date": startDate, "end-date": endDate, description, technologies } = req.body;
   let techArray = Array.isArray(technologies) ? technologies : (technologies ? [technologies] : []);
+
   // Jika ada file baru diupload, proses file upload
   let imagePath;
   const file = req.files ? req.files["upload-image"] : null;

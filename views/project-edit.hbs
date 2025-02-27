@@ -1,40 +1,45 @@
 {{#> layout currentPage="Edit Project"}}
-<div class="container my-5">
-  <div>
-  <h1 class="text-center mb-4">Edit Project</h1>
+<div >
+  <h1 style="text-align: center; margin-top: 30px;">Edit Project</h1>
   <form id="edit-project" action="/project-update/{{project.id}}?_method=PATCH" method="post" enctype="multipart/form-data">
-    </div>
-    <div class="mb-3">
+    <div class="form-group">
       <label for="name" class="form-label">Project Name:</label>
       <input type="text" id="name" name="project-name" value="{{project.projectName}}" class="form-control" required>
     </div>
-    <div class="mb-3">
+    <div class="form-group">
       <label for="start_date" class="form-label">Start Date:</label>
       <input type="date" id="start_date" name="start-date" value="{{project.startDate}}" class="form-control" required>
     </div>
-    <div class="mb-3">
+    <div class="form-group">
       <label for="end_date" class="form-label">End Date:</label>
-      <input type="date" id="end_date" name="end-date" value="{{project.endDate}}" class="form-control" required>
+     <input type="date" id="end_date" name="end-date" value="{{project.endDate}}" class="form-control" required>
     </div>
-    <div class="mb-3">
+    <div class="form-group">
       <label for="description" class="form-label">Description:</label>
       <textarea id="description" name="description" class="form-control" required>{{project.description}}</textarea>
     </div>
-    <div class="mb-3">
-      <label for="technologies" class="form-label">Technologies (pisahkan dengan koma):</label>
-      <input type="text" id="technologies" name="technologies" value="{{project.technologys}}" class="form-control">
+    <div class="form-group">
+      <label class="form-label">Technologies:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="technologies" value="Node Js" {{project.technologys }} checked> Node Js</label>
+        <label><input type="checkbox" name="technologies" value="Next Js" {{project.technologys }} checked >nextjs</label>
+        <label><input type="checkbox" name="technologies" value="React Js" {{project.technologys }}checked> React Js</label>
+        <label><input type="checkbox" name="technologies" value="TypeScript" {{ project.technologys }}checked> TypeScript</label>
+      </div>
     </div>
-    <div class="mb-3">
+    <div class="form-group">
       <label class="form-label">Current Image:</label>
       {{#if project.image}}
         <img src="/{{project.image}}" alt="Project Image" class="img-fluid mb-3" style="max-width:200px;">
       {{/if}}
     </div>
-    <div class="mb-3">
+    <div class="form-group">
       <label for="upload-image" class="form-label">Change Image:</label>
       <input type="file" id="upload-image" name="upload-image" class="form-control">
-    </div>
+    </div >
+    <div class="form-group">
     <button type="submit" class="btn btn-primary">Update</button>
+    </div>
   </form>
 </div>
 {{/layout}}

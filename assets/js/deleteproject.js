@@ -1,4 +1,4 @@
-function deleteConfirm(event) {
+function deleteConfirm(event, form) {
   event.preventDefault();
   Swal.fire({
     title: "Are you sure?",
@@ -10,7 +10,7 @@ function deleteConfirm(event) {
     confirmButtonText: "Yes, delete it!"
   }).then((result) => {
     if (result.isConfirmed) {
-      document.getElementById("deleteproject").submit();
+      form.submit();
       Swal.fire({
         title: "Deleted!",
         text: "Your file has been deleted.",
@@ -18,6 +18,4 @@ function deleteConfirm(event) {
       });
     }
   });
-      
-     
 }
